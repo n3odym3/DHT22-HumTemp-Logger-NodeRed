@@ -1,0 +1,8 @@
+#define ssid "SSID"
+#define password "PASSWORD"
+#define mqtt_server "BROKER IP"
+#define HostName "ESP_DHT_01"
+#define topic_hum "dht22/01/hum"
+#define topic_temp "dht22/01/temp"
+#define mqttUser "MQTTUSER"
+#define mqttPassword "MQTTPASS"
