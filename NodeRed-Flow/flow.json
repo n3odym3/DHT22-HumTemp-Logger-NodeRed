@@ -1,1 +1,184 @@
-[{"id":"b85c1b57.5db548","type":"mqtt in","z":"ede1b458.4c44e8","name":"","topic":"dht22/01/hum","qos":"2","datatype":"auto","broker":"f261d197.fdec9","x":110,"y":90,"wires":[["309bdb17.a59a74"]]},{"id":"d5d5aea3.e5e93","type":"mqtt in","z":"ede1b458.4c44e8","name":"","topic":"dht22/01/hum","qos":"2","datatype":"auto","broker":"f261d197.fdec9","x":110,"y":140,"wires":[["eb630e92.2257"]]},{"id":"309bdb17.a59a74","type":"function","z":"ede1b458.4c44e8","name":"Humidity","func":"msg.payload = {\"Hum\" : parseFloat(msg.payload)}\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","x":270,"y":90,"wires":[["988b3a43.3e4728"]]},{"id":"eb630e92.2257","type":"function","z":"ede1b458.4c44e8","name":"Temperature","func":"msg.payload = {\"Temp\" : parseFloat(msg.payload)}\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","x":280,"y":140,"wires":[["988b3a43.3e4728"]]},{"id":"73219194.26a3a","type":"influxdb out","z":"ede1b458.4c44e8","influxdb":"8e7a5f6e.3b91d","name":"","measurement":"DHT22-ESP","precision":"","retentionPolicy":"","x":710,"y":90,"wires":[]},{"id":"3d06ebee.70c0d4","type":"ui_template","z":"ede1b458.4c44e8","group":"d11234f2.e33e38","name":"","order":1,"width":12,"height":6,"format":"<iframe src=\"http://127.0.0.1:3000/d-solo/UbDhZYeZz/lab?orgId=1&from=now-7d&to=now&panelId=4&refresh=5m\" height=\"100%\" frameborder=\"0\"></iframe>","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":460,"y":140,"wires":[[]]},{"id":"988b3a43.3e4728","type":"join","z":"ede1b458.4c44e8","name":"","mode":"custom","build":"merged","property":"payload","propertyType":"msg","key":"topic","joiner":"\\n","joinerType":"str","accumulate":false,"timeout":"","count":"2","reduceRight":false,"reduceExp":"","reduceInit":"","reduceInitType":"","reduceFixup":"","x":450,"y":90,"wires":[["73219194.26a3a"]]},{"id":"f261d197.fdec9","type":"mqtt-broker","name":"MQTT Broker","broker":"127.0.0.1","port":"1883","clientid":"","usetls":false,"compatmode":false,"keepalive":"60","cleansession":true,"birthTopic":"","birthQos":"0","birthPayload":"","closeTopic":"","closeQos":"0","closePayload":"","willTopic":"","willQos":"0","willPayload":""},{"id":"8e7a5f6e.3b91d","type":"influxdb","hostname":"127.0.0.1","port":"8086","protocol":"http","database":"Culture Room","name":"","usetls":false,"tls":""},{"id":"d11234f2.e33e38","type":"ui_group","name":"Culture Room","tab":"aa510971.d6a458","order":1,"disp":true,"width":"12","collapse":false},{"id":"aa510971.d6a458","type":"ui_tab","name":"Culture Room","icon":"dashboard","order":2,"disabled":false,"hidden":false}]
+[
+    {
+        "id": "b85c1b57.5db548",
+        "type": "mqtt in",
+        "z": "ede1b458.4c44e8",
+        "name": "",
+        "topic": "dht22/01/hum",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f261d197.fdec9",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "309bdb17.a59a74"
+            ]
+        ]
+    },
+    {
+        "id": "d5d5aea3.e5e93",
+        "type": "mqtt in",
+        "z": "ede1b458.4c44e8",
+        "name": "",
+        "topic": "dht22/01/temp",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f261d197.fdec9",
+        "x": 160,
+        "y": 250,
+        "wires": [
+            [
+                "eb630e92.2257"
+            ]
+        ]
+    },
+    {
+        "id": "309bdb17.a59a74",
+        "type": "function",
+        "z": "ede1b458.4c44e8",
+        "name": "Humidity",
+        "func": "msg.payload = {\"Hum\" : parseFloat(msg.payload)}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "988b3a43.3e4728"
+            ]
+        ]
+    },
+    {
+        "id": "eb630e92.2257",
+        "type": "function",
+        "z": "ede1b458.4c44e8",
+        "name": "Temperature",
+        "func": "msg.payload = {\"Temp\" : parseFloat(msg.payload)}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 330,
+        "y": 250,
+        "wires": [
+            [
+                "988b3a43.3e4728"
+            ]
+        ]
+    },
+    {
+        "id": "73219194.26a3a",
+        "type": "influxdb out",
+        "z": "ede1b458.4c44e8",
+        "influxdb": "8e7a5f6e.3b91d",
+        "name": "",
+        "measurement": "DHT22-ESP",
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 760,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "3d06ebee.70c0d4",
+        "type": "ui_template",
+        "z": "ede1b458.4c44e8",
+        "group": "d11234f2.e33e38",
+        "name": "",
+        "order": 1,
+        "width": 12,
+        "height": 6,
+        "format": "<iframe src=\"http://127.0.0.1:3000/d-solo/UbDhZYeZz/lab?orgId=1&from=now-7d&to=now&panelId=4&refresh=5m\" height=\"100%\" frameborder=\"0\"></iframe>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 510,
+        "y": 250,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "988b3a43.3e4728",
+        "type": "join",
+        "z": "ede1b458.4c44e8",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "73219194.26a3a"
+            ]
+        ]
+    },
+    {
+        "id": "f261d197.fdec9",
+        "type": "mqtt-broker",
+        "name": "MQTT Broker",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "8e7a5f6e.3b91d",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "Culture Room",
+        "name": "",
+        "usetls": false,
+        "tls": ""
+    },
+    {
+        "id": "d11234f2.e33e38",
+        "type": "ui_group",
+        "name": "Culture Room",
+        "tab": "aa510971.d6a458",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "aa510971.d6a458",
+        "type": "ui_tab",
+        "name": "Culture Room",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
